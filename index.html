@@ -1,795 +1,476 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Arslan Shah · E-Commerce, Brand & Data</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200..700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --bg: #F6F5F0;
-      --text: #171814;
-      --text-secondary: #6B6D64;
-      --border: #DDDCD4;
-      --accent: #536653;
-      --white: #FFFFFF;
-      --dark-bg: #111411;
-      --dark-text: #F1F1EA;
-      --dark-secondary: #A7AAA0;
-      --dark-border: #2A2D28;
-      --dark-accent: #82937C;
-      --dark-card: #181C18;
-      --bright-lime: #b4c98b;
-      --bright-sun: #e9c46a;
-      --soft-coral: #e9a882;
-      --transition: 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
-    }
-
-    body {
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      transition: background-color 0.4s ease, color 0.4s ease;
-      overflow-x: hidden;
-      font-weight: 300;
-    }
-
-    body.dark {
-      background-color: var(--dark-bg);
-      color: var(--dark-text);
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    h1, h2, h3 {
-      font-weight: 300;
-      letter-spacing: -0.02em;
-    }
-
-    h1 {
-      font-size: clamp(3.8rem, 9vw, 6rem);
-      line-height: 1.1;
-      font-weight: 250;
-    }
-
-    h2 {
-      font-size: 2.8rem;
-      font-weight: 280;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-label {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.25em;
-      color: var(--text-secondary);
-      margin-bottom: 2rem;
-      font-weight: 400;
-      display: inline-block;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.4rem;
-    }
-
-    body.dark .section-label {
-      color: var(--dark-secondary);
-      border-bottom-color: var(--dark-border);
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.8rem 2.5rem;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 100;
-      background: transparent;
-      transition: background 0.4s, backdrop-filter 0.4s, color 0.3s;
-      mix-blend-mode: difference;
-      color: white;
-    }
-
-    .navbar.scrolled {
-      background: rgba(246, 245, 240, 0.9);
-      backdrop-filter: blur(16px);
-      mix-blend-mode: normal;
-      color: var(--text);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-    }
-
-    body.dark .navbar.scrolled {
-      background: rgba(17, 20, 17, 0.9);
-      color: var(--dark-text);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .nav-logo {
-      font-weight: 400;
-      font-size: 1.4rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.3rem;
-      align-items: center;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 400;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: inherit;
-      transition: opacity 0.2s;
-      cursor: pointer;
-    }
-
-    .nav-links a:hover {
-      opacity: 0.65;
-    }
-
-    .theme-toggle {
-      background: none;
-      border: none;
-      font-size: 1.4rem;
-      cursor: pointer;
-      color: inherit;
-      margin-left: 0.5rem;
-      transition: transform 0.3s;
-    }
-
-    .theme-toggle:hover {
-      transform: rotate(15deg);
-    }
-
-    .hero {
-      position: relative;
-      height: 100vh;
-      width: 100%;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      color: white;
-    }
-
-    .hero-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      animation: heroSlowZoom 22s infinite alternate ease-in-out;
-      filter: brightness(0.85);
-    }
-
-    @keyframes heroSlowZoom {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.04); }
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 60%);
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 850px;
-      margin-left: 7vw;
-      animation: fadeInUp 1.2s ease-out;
-    }
-
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(25px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-sub {
-      font-size: 0.9rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      margin-bottom: 2rem;
-      font-weight: 350;
-      color: rgba(255,255,255,0.9);
-    }
-
-    .hero-text {
-      font-size: 1.4rem;
-      font-weight: 280;
-      line-height: 1.6;
-      max-width: 580px;
-      margin-bottom: 2.8rem;
-      opacity: 0.92;
-    }
-
-    .btn-group {
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.9rem 2.4rem;
-      border: 1px solid white;
-      color: white;
-      text-decoration: none;
-      font-size: 0.85rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: all 0.4s;
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(8px);
-      cursor: pointer;
-      font-weight: 400;
-    }
-
-    .btn:hover {
-      background: white;
-      color: #111;
-      border-color: white;
-    }
-
-    .btn-outline {
-      border-color: var(--text);
-      color: var(--text);
-      background: transparent;
-      backdrop-filter: none;
-    }
-
-    body.dark .btn-outline {
-      border-color: var(--dark-text);
-      color: var(--dark-text);
-    }
-
-    .btn-outline:hover {
-      background: var(--text);
-      color: var(--bg);
-    }
-
-    body.dark .btn-outline:hover {
-      background: var(--dark-text);
-      color: var(--dark-bg);
-    }
-
-    .scroll-hint {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      font-size: 0.75rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      opacity: 0.8;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-      40% { transform: translateX(-50%) translateY(-8px); }
-      60% { transform: translateX(-50%) translateY(-4px); }
-    }
-
-    section {
-      padding: 7rem 0;
-    }
-
-    .light-section {
-      background: var(--white);
-    }
-
-    body.dark .light-section {
-      background: var(--dark-card);
-    }
-
-    .nature-divider {
-      position: relative;
-      width: 100%;
-      height: 60vh;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-    }
-
-    .nature-divider img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(0.65);
-      transition: transform 8s ease;
-    }
-
-    .nature-divider:hover img {
-      transform: scale(1.02);
-    }
-
-    .nature-divider .quote {
-      position: relative;
-      z-index: 2;
-      font-size: 2.4rem;
-      font-weight: 280;
-      max-width: 750px;
-      padding: 0 2rem;
-      font-style: italic;
-      text-shadow: 0 2px 15px rgba(0,0,0,0.3);
-    }
-
-    .accent-bright {
-      color: var(--bright-sun);
-    }
-
-    .project-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 6rem;
-      margin-top: 2rem;
-    }
-
-    .project-item {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .project-number {
-      font-size: 3.5rem;
-      font-weight: 200;
-      color: var(--accent);
-      margin-bottom: 0.2rem;
-      opacity: 0.7;
-    }
-
-    body.dark .project-number {
-      color: var(--dark-accent);
-    }
-
-    .project-title {
-      font-size: 2.4rem;
-      font-weight: 280;
-      margin-bottom: 0.8rem;
-    }
-
-    .project-tags {
-      display: flex;
-      gap: 1.2rem;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--text-secondary);
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .project-desc {
-      margin-bottom: 2rem;
-      color: var(--text-secondary);
-      font-weight: 320;
-    }
-
-    .project-image {
-      width: 100%;
-      height: auto;
-      border-radius: 2px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-      transition: transform 0.5s ease, box-shadow 0.5s;
-    }
-
-    .project-image:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 25px 50px rgba(0,0,0,0.12);
-    }
-
-    .experience-timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 2.8rem;
-      margin-top: 2rem;
-    }
-
-    .exp-item {
-      display: flex;
-      gap: 2.5rem;
-      border-left: 1px solid var(--border);
-      padding-left: 2.5rem;
-      transition: border-color 0.3s;
-    }
-
-    .exp-item:hover {
-      border-left-color: var(--bright-lime);
-    }
-
-    .exp-year {
-      font-weight: 350;
-      min-width: 160px;
-      color: var(--accent);
-      letter-spacing: 0.05em;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 3.5rem;
-      margin-top: 2rem;
-    }
-
-    .skill-category h4 {
-      font-weight: 420;
-      margin-bottom: 1.2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-size: 0.9rem;
-      color: var(--accent);
-    }
-
-    .skill-category ul {
-      list-style: none;
-      color: var(--text-secondary);
-    }
-
-    .skill-category li {
-      margin-bottom: 0.4rem;
-      transition: color 0.2s;
-    }
-
-    .skill-category li:hover {
-      color: var(--bright-lime);
-    }
-
-    .about-flex {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .about-image {
-      width: 100%;
-      height: 420px;
-      object-fit: cover;
-      border-radius: 2px;
-      filter: brightness(0.95);
-    }
-
-    .footer {
-      text-align: center;
-      padding: 2.5rem;
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      border-top: 1px solid var(--border);
-    }
-
-    @media (max-width: 768px) {
-      .project-item, .about-flex {
-        grid-template-columns: 1fr;
-      }
-      .nav-links {
-        gap: 1rem;
-        font-size: 0.7rem;
-      }
-      .hero-content {
-        margin-left: 1.5rem;
-      }
-    }
-
-    .highlight-bright {
-      color: var(--soft-coral);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Arslan Shah · Premium Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav class="navbar" id="navbar">
-    <div class="nav-logo">ARSLAN SHAH</div>
-    <div class="nav-links">
-      <a href="#work">Work</a>
-      <a href="#casestudies">Cases</a>
-      <a href="#experience">Experience</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#cv">CV</a>
-      <a href="#contact">Contact</a>
-      <button class="theme-toggle" id="themeToggle" aria-label="Dark mode toggle">☾</button>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <span class="preloader-logo">AS</span>
+            <div class="preloader-bar">
+                <div class="preloader-progress"></div>
+            </div>
+        </div>
     </div>
-  </nav>
 
-  <header class="hero">
-    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Mountain mist landscape" class="hero-image">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>ARSLAN SHAH</h1>
-      <div class="hero-sub">E-COMMERCE • BRAND • DATA</div>
-      <p class="hero-text">Building brands, understanding customers, and creating digital solutions for real business problems.</p>
-      <div class="btn-group">
-        <a href="#work" class="btn">Explore Work</a>
-        <a href="Arslan_Shah_CV.pdf" class="btn" download>Download CV</a>
-      </div>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- 3D Background Particles -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-logo">ARSLAN SHAH</div>
+        <div class="nav-links desktop-nav">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#work" class="nav-link">Work</a>
+            <a href="#casestudies" class="nav-link">Cases</a>
+            <a href="#experience" class="nav-link">Experience</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#contact" class="nav-link">Contact</a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Carousel Navigation -->
+    <div class="mobile-carousel" id="mobileCarousel">
+        <div class="carousel-overlay"></div>
+        <button class="carousel-close" id="carouselClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="carousel-container">
+            <div class="carousel-track" id="carouselTrack">
+                <a href="#home" class="carousel-item">
+                    <span class="carousel-number">01</span>
+                    <span class="carousel-text">Home</span>
+                </a>
+                <a href="#work" class="carousel-item">
+                    <span class="carousel-number">02</span>
+                    <span class="carousel-text">Work</span>
+                </a>
+                <a href="#casestudies" class="carousel-item">
+                    <span class="carousel-number">03</span>
+                    <span class="carousel-text">Cases</span>
+                </a>
+                <a href="#experience" class="carousel-item">
+                    <span class="carousel-number">04</span>
+                    <span class="carousel-text">Experience</span>
+                </a>
+                <a href="#about" class="carousel-item">
+                    <span class="carousel-number">05</span>
+                    <span class="carousel-text">About</span>
+                </a>
+                <a href="#skills" class="carousel-item">
+                    <span class="carousel-number">06</span>
+                    <span class="carousel-text">Skills</span>
+                </a>
+                <a href="#contact" class="carousel-item">
+                    <span class="carousel-number">07</span>
+                    <span class="carousel-text">Contact</span>
+                </a>
+            </div>
+        </div>
+        <div class="carousel-indicators">
+            <span class="carousel-dot active"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+        </div>
     </div>
-    <div class="scroll-hint">Scroll ↓</div>
-  </header>
 
-  <section id="work" class="light-section">
-    <div class="container">
-      <span class="section-label">Selected Work</span>
-      <p style="max-width:600px; font-weight:300; margin-bottom:4rem; font-size:1.2rem;">A collection of brands, digital systems, and data-driven projects.</p>
-      
-      <div class="project-grid">
-        <div class="project-item">
-          <div>
-            <div class="project-number">01</div>
-            <h3 class="project-title">BEYOU</h3>
-            <div class="project-tags">E-COMMERCE · DATA · BRAND</div>
-            <p class="project-desc">Using sales and customer data to understand business behavior and improve decision making.</p>
-            <a href="#" class="btn btn-outline">View Case Study</a>
-          </div>
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Beyou dashboard" class="project-image">
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-3d-container">
+            <div class="hero-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Mountain landscape" class="hero-image" id="heroImage">
+            </div>
+            <div class="hero-overlay"></div>
         </div>
-
-        <div class="project-item">
-          <div>
-            <div class="project-number">02</div>
-            <h3 class="project-title">DÉCOR GHAR</h3>
-            <div class="project-tags">BRAND · INFLUENCER · E-COMMERCE</div>
-            <p class="project-desc">Building brand awareness through influencer marketing and digital strategy.</p>
-            <a href="#" class="btn btn-outline">View Case Study</a>
-          </div>
-          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Decor Ghar" class="project-image">
+        <div class="hero-content">
+            <span class="hero-badge">Portfolio 2026</span>
+            <h1 class="hero-title">ARSLAN SHAH</h1>
+            <div class="hero-subtitle">E-COMMERCE • BRAND • DATA</div>
+            <p class="hero-description">Building brands, understanding customers, and creating digital solutions for real business problems.</p>
+            <div class="btn-group">
+                <a href="#work" class="btn btn-primary">
+                    <span>Explore Work</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="documents/Arslan_Shah_CV.pdf" class="btn btn-secondary" download>
+                    <span>Download CV</span>
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
         </div>
-
-        <div class="project-item">
-          <div>
-            <div class="project-number">03</div>
-            <h3 class="project-title">AKBEAUTY</h3>
-            <div class="project-tags">E-COMMERCE · BRAND · BEAUTY</div>
-            <p class="project-desc">Beauty brand development with digital storefront and customer analytics.</p>
-            <a href="#" class="btn btn-outline">View Case Study</a>
-          </div>
-          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1487&q=80" alt="AKBEAUTY" class="project-image">
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <div class="scroll-line"></div>
         </div>
+    </header>
 
-        <div class="project-item">
-          <div>
-            <div class="project-number">04</div>
-            <h3 class="project-title">DCORVO</h3>
-            <div class="project-tags">BRAND · DIGITAL · E-COMMERCE</div>
-            <p class="project-desc">Digital brand identity and e-commerce system for modern retail.</p>
-            <a href="#" class="btn btn-outline">View Case Study</a>
-          </div>
-          <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="DCORVO" class="project-image">
+    <!-- Work Section -->
+    <section id="work" class="work-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Selected Work</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-description">A collection of brands, digital systems, and data-driven projects.</p>
+            </div>
+            
+            <div class="project-grid">
+                <div class="project-item" data-parallax>
+                    <div class="project-info">
+                        <span class="project-number">01</span>
+                        <h3 class="project-title">BEYOU</h3>
+                        <div class="project-tags">
+                            <span>E-Commerce</span>
+                            <span>Data Analysis</span>
+                            <span>Brand Development</span>
+                        </div>
+                        <p class="project-description">Using sales and customer data to understand business behavior and improve decision making.</p>
+                        <a href="#casestudies" class="project-link">
+                            <span>View Case Study</span>
+                            <i class="fas fa-long-arrow-alt-right"></i>
+                        </a>
+                    </div>
+                    <div class="project-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="BEYOU Dashboard" class="project-image">
+                        <div class="project-image-overlay"></div>
+                    </div>
+                </div>
+
+                <div class="project-item reverse" data-parallax>
+                    <div class="project-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80" alt="Decor Ghar" class="project-image">
+                        <div class="project-image-overlay"></div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-number">02</span>
+                        <h3 class="project-title">DÉCOR GHAR</h3>
+                        <div class="project-tags">
+                            <span>Brand Development</span>
+                            <span>Influencer Marketing</span>
+                            <span>E-Commerce</span>
+                        </div>
+                        <p class="project-description">Building brand awareness through influencer marketing and digital strategy.</p>
+                        <a href="#casestudies" class="project-link">
+                            <span>View Case Study</span>
+                            <i class="fas fa-long-arrow-alt-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-item" data-parallax>
+                    <div class="project-info">
+                        <span class="project-number">03</span>
+                        <h3 class="project-title">AKBEAUTY</h3>
+                        <div class="project-tags">
+                            <span>E-Commerce</span>
+                            <span>Brand Development</span>
+                            <span>Beauty</span>
+                        </div>
+                        <p class="project-description">Beauty brand development with digital storefront and customer analytics.</p>
+                        <a href="#casestudies" class="project-link">
+                            <span>View Case Study</span>
+                            <i class="fas fa-long-arrow-alt-right"></i>
+                        </a>
+                    </div>
+                    <div class="project-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1487&q=80" alt="AKBEAUTY" class="project-image">
+                        <div class="project-image-overlay"></div>
+                    </div>
+                </div>
+
+                <div class="project-item reverse" data-parallax>
+                    <div class="project-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="DCORVO" class="project-image">
+                        <div class="project-image-overlay"></div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-number">04</span>
+                        <h3 class="project-title">DCORVO</h3>
+                        <div class="project-tags">
+                            <span>Brand</span>
+                            <span>Digital</span>
+                            <span>E-Commerce</span>
+                        </div>
+                        <p class="project-description">Digital brand identity and e-commerce system for modern retail.</p>
+                        <a href="#casestudies" class="project-link">
+                            <span>View Case Study</span>
+                            <i class="fas fa-long-arrow-alt-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-item" data-parallax>
+                    <div class="project-info">
+                        <span class="project-number">05</span>
+                        <h3 class="project-title">SHESHOEOFFICIAL</h3>
+                        <div class="project-tags">
+                            <span>E-Commerce</span>
+                            <span>Fashion</span>
+                            <span>Brand</span>
+                        </div>
+                        <p class="project-description">Footwear brand e-commerce platform with influencer integration.</p>
+                        <a href="#casestudies" class="project-link">
+                            <span>View Case Study</span>
+                            <i class="fas fa-long-arrow-alt-right"></i>
+                        </a>
+                    </div>
+                    <div class="project-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1480&q=80" alt="SHESHOEOFFICIAL" class="project-image">
+                        <div class="project-image-overlay"></div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="project-item">
-          <div>
-            <div class="project-number">05</div>
-            <h3 class="project-title">SHESHOEOFFICIAL</h3>
-            <div class="project-tags">E-COMMERCE · FASHION · BRAND</div>
-            <p class="project-desc">Footwear brand e-commerce platform with influencer integration.</p>
-            <a href="#" class="btn btn-outline">View Case Study</a>
-          </div>
-          <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" alt="SHESHOEOFFICIAL" class="project-image">
+    <!-- Case Studies Section -->
+    <section id="casestudies" class="case-studies-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Case Studies</span>
+                <h2 class="section-title">In-Depth Analysis</h2>
+                <p class="section-description">Detailed breakdowns of challenges, approaches, and solutions.</p>
+            </div>
+            
+            <div class="case-studies-grid">
+                <div class="case-study-item">
+                    <h3 class="case-study-title">01 / BEYOU</h3>
+                    <p class="case-study-category">Customer behavior & sales analysis</p>
+                    <div class="case-study-content">
+                        <p><strong>Challenge:</strong> Fragmented data sources across multiple platforms.</p>
+                        <p><strong>Approach:</strong> Unified data pipeline and analytics dashboard.</p>
+                        <p><strong>Result:</strong> 45% improvement in customer retention.</p>
+                    </div>
+                </div>
+                <div class="case-study-item">
+                    <h3 class="case-study-title">02 / DÉCOR GHAR</h3>
+                    <p class="case-study-category">Influencer marketing & brand development</p>
+                    <div class="case-study-content">
+                        <p><strong>Challenge:</strong> Low brand awareness in home decor niche.</p>
+                        <p><strong>Approach:</strong> Strategic influencer partnerships and content.</p>
+                        <p><strong>Result:</strong> 3x increase in social media engagement.</p>
+                    </div>
+                </div>
+                <div class="case-study-item">
+                    <h3 class="case-study-title">03 / AKBEAUTY</h3>
+                    <p class="case-study-category">Beauty brand digital transformation</p>
+                    <div class="case-study-content">
+                        <p><strong>Challenge:</strong> Transitioning from physical to online retail.</p>
+                        <p><strong>Approach:</strong> E-commerce platform and customer insights.</p>
+                        <p><strong>Result:</strong> 200% online sales growth in 6 months.</p>
+                    </div>
+                </div>
+                <div class="case-study-item">
+                    <h3 class="case-study-title">04 / DCORVO</h3>
+                    <p class="case-study-category">Digital brand identity creation</p>
+                    <div class="case-study-content">
+                        <p><strong>Challenge:</strong> Building a cohesive brand from scratch.</p>
+                        <p><strong>Approach:</strong> Complete brand guidelines and web design.</p>
+                        <p><strong>Result:</strong> Successful market launch within 3 months.</p>
+                    </div>
+                </div>
+                <div class="case-study-item">
+                    <h3 class="case-study-title">05 / SHESHOEOFFICIAL</h3>
+                    <p class="case-study-category">Footwear e-commerce & influencer strategy</p>
+                    <div class="case-study-content">
+                        <p><strong>Challenge:</strong> Competing in saturated fashion market.</p>
+                        <p><strong>Approach:</strong> Micro-influencer campaigns and analytics.</p>
+                        <p><strong>Result:</strong> 150% ROI on influencer marketing.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="nature-divider">
-    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Forest light">
-    <div class="quote">"Good work starts with clear thinking."<br><span style="font-size:1.5rem; font-style:normal; font-weight:300;">— Arslan Shah</span></div>
-  </div>
-
-  <section id="casestudies" class="light-section">
-    <div class="container">
-      <span class="section-label">Case Studies</span>
-      <div style="display:flex; flex-direction:column; gap:5rem;">
-        <div class="project-item">
-          <div>
-            <h3 style="font-weight:300;">01 / BEYOU</h3>
-            <p style="margin:1rem 0;"><span class="highlight-bright">●</span> Customer behavior & sales analysis</p>
-            <p><strong>CHALLENGE</strong> — Fragmented data sources.</p>
-            <p style="margin-top:1rem;"><strong>SKILLS</strong> Python · Pandas · E-Commerce Strategy</p>
-          </div>
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80" alt="Analysis">
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Experience</span>
+                <h2 class="section-title">Professional Journey</h2>
+            </div>
+            
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <span class="timeline-year">2024 — 2026</span>
+                    <div class="timeline-content">
+                        <h4>Hypetek Advertising Agency</h4>
+                        <p>Brand Development & Brand Management Executive</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2024</span>
+                    <div class="timeline-content">
+                        <h4>Hypetek</h4>
+                        <p>Data Analyst — E-Commerce</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2023 — 2024</span>
+                    <div class="timeline-content">
+                        <h4>Hypetek</h4>
+                        <p>Software Developer & Data Analyst</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">Oct 2022 — Apr 2023</span>
+                    <div class="timeline-content">
+                        <h4>Ezline Software House Pvt Ltd</h4>
+                        <p>Frontend Developer Internship</p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="project-item">
-          <div>
-            <h3 style="font-weight:300;">02 / DÉCOR GHAR</h3>
-            <p style="margin:1rem 0;"><span class="highlight-bright">●</span> Influencer marketing & brand development</p>
-            <p><strong>CHALLENGE</strong> — Low brand awareness in home decor niche.</p>
-            <p style="margin-top:1rem;"><strong>SKILLS</strong> Brand Strategy · Influencer Campaigns · Shopify</p>
-          </div>
-          <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Decor Ghar case">
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-flex">
+                <div class="about-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1574&q=80" alt="About Me" class="about-image">
+                    <div class="about-image-overlay"></div>
+                </div>
+                <div class="about-content">
+                    <span class="section-label">About Me</span>
+                    <h2 class="section-title">The Intersection of Creativity & Data</h2>
+                    <p>I work at the intersection of e-commerce, brand development, data analysis and digital systems. I enjoy understanding how a business works, identifying problems through data, and turning ideas into practical digital solutions.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="project-item">
-          <div>
-            <h3 style="font-weight:300;">03 / AKBEAUTY</h3>
-            <p style="margin:1rem 0;"><span class="highlight-bright">●</span> Beauty brand digital transformation</p>
-            <p><strong>CHALLENGE</strong> — Transitioning from physical to online retail.</p>
-            <p style="margin-top:1rem;"><strong>SKILLS</strong> E-Commerce · Data Analysis · Customer Insights</p>
-          </div>
-          <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" alt="AKBEAUTY case">
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Skills</span>
+                <h2 class="section-title">Technical Expertise</h2>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h4>E-Commerce</h4>
+                    <ul>
+                        <li>Shopify</li>
+                        <li>Store Management</li>
+                        <li>Customer Analysis</li>
+                        <li>Sales Analysis</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Brand Development</h4>
+                    <ul>
+                        <li>Brand Management</li>
+                        <li>Brand Positioning</li>
+                        <li>Influencer Marketing</li>
+                        <li>Campaign Management</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h4>Data Analysis</h4>
+                    <ul>
+                        <li>Python</li>
+                        <li>Pandas</li>
+                        <li>NumPy</li>
+                        <li>Matplotlib</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4>Digital Systems</h4>
+                    <ul>
+                        <li>Flask</li>
+                        <li>SQLite</li>
+                        <li>JavaScript</li>
+                        <li>Git</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="project-item">
-          <div>
-            <h3 style="font-weight:300;">04 / DCORVO</h3>
-            <p style="margin:1rem 0;"><span class="highlight-bright">●</span> Digital brand identity creation</p>
-            <p><strong>CHALLENGE</strong> — Building a cohesive brand from scratch.</p>
-            <p style="margin-top:1rem;"><strong>SKILLS</strong> Brand Development · Web Design · Strategy</p>
-          </div>
-          <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80" alt="DCORVO case">
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-background">
+            <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Contact Background">
+            <div class="contact-overlay"></div>
         </div>
-
-        <div class="project-item">
-          <div>
-            <h3 style="font-weight:300;">05 / SHESHOEOFFICIAL</h3>
-            <p style="margin:1rem 0;"><span class="highlight-bright">●</span> Footwear e-commerce & influencer strategy</p>
-            <p><strong>CHALLENGE</strong> — Competing in saturated fashion market.</p>
-            <p style="margin-top:1rem;"><strong>SKILLS</strong> Influencer Marketing · E-Commerce · Analytics</p>
-          </div>
-          <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" alt="SHESHOEOFFICIAL case">
+        <div class="contact-content">
+            <h2 class="contact-title">Let's Build Something <span>Meaningful</span></h2>
+            <p class="contact-description">Have a brand, e-commerce project, data problem or digital system in mind?</p>
+            <a href="mailto:arslan@example.com" class="btn btn-primary">Get in Touch</a>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="experience">
-    <div class="container">
-      <span class="section-label">Experience</span>
-      <div class="experience-timeline">
-        <div class="exp-item"><span class="exp-year">2024 — 2026</span><div><strong>Hypetek Advertising Agency</strong><br>Brand Development & Brand Management Executive</div></div>
-        <div class="exp-item"><span class="exp-year">2024</span><div><strong>Hypetek</strong><br>Data Analyst — E-Commerce</div></div>
-        <div class="exp-item"><span class="exp-year">2023 — 2024</span><div><strong>Hypetek</strong><br>Software Developer & Data Analyst</div></div>
-        <div class="exp-item"><span class="exp-year">Oct 2022 — Apr 2023</span><div><strong>Ezline Software House Pvt Ltd</strong><br>Frontend Developer Internship</div></div>
-      </div>
-    </div>
-  </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <span class="footer-logo">ARSLAN SHAH</span>
+                <span class="footer-text">E-Commerce • Brand Development • Data • Digital Systems</span>
+                <span class="footer-copyright">© 2026 Arslan Shah. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
 
-  <div class="nature-divider" style="height:50vh;">
-    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Lake water calm">
-    <div style="position:relative; z-index:2; font-size:2.2rem; letter-spacing:0.25em; font-weight:280;">THINK. BUILD. <span style="color:#e9c46a;">IMPROVE.</span></div>
-  </div>
-
-  <section id="about">
-    <div class="container about-flex">
-      <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1574&q=80" alt="Calm valley" class="about-image">
-      <div>
-        <span class="section-label">About Me</span>
-        <p style="font-weight:300; font-size:1.25rem; line-height:1.7;">I work at the intersection of e-commerce, brand development, data analysis and digital systems. I enjoy understanding how a business works, identifying problems through data, and turning ideas into practical digital solutions.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills" class="light-section">
-    <div class="container">
-      <span class="section-label">Skills</span>
-      <div class="skills-grid">
-        <div class="skill-category"><h4>E-COMMERCE</h4><ul><li>Shopify</li><li>Store Management</li><li>Customer Analysis</li><li>Sales Analysis</li></ul></div>
-        <div class="skill-category"><h4>BRAND</h4><ul><li>Brand Management</li><li>Brand Positioning</li><li>Influencer Marketing</li><li>Campaigns</li></ul></div>
-        <div class="skill-category"><h4>DATA</h4><ul><li>Python</li><li>Pandas</li><li>NumPy</li><li>Matplotlib</li><li>Business Analytics</li></ul></div>
-        <div class="skill-category"><h4>SYSTEMS</h4><ul><li>Flask</li><li>SQLite</li><li>JavaScript</li><li>HTML/CSS</li><li>Git</li></ul></div>
-      </div>
-    </div>
-  </section>
-
-  <div id="cv" class="nature-divider" style="height:50vh;">
-    <img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Open sky landscape">
-    <div style="position:relative; z-index:2;">
-      <p style="font-size:2rem; margin-bottom:1.5rem; font-weight:300;">A CLOSER LOOK</p>
-      <a href="documents/Arslan_Shah_CV.pdf" class="btn" download>DOWNLOAD CV</a>
-      <p style="margin-top:1.2rem; opacity:0.85;">PDF • UPDATED 2026</p>
-    </div>
-  </div>
-
-  <section id="contact" class="nature-divider" style="height:75vh;">
-    <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sunset mountain water">
-    <div style="position:relative; z-index:2; text-align:center;">
-      <h2 style="font-weight:280; color:white;">LET'S BUILD SOMETHING <span style="color:#e9c46a;">MEANINGFUL.</span></h2>
-      <p style="margin:2rem 0; font-size:1.2rem;">Have a brand, e-commerce project, or data problem in mind?</p>
-      <a href="#" class="btn">Get in Touch</a>
-      <div style="margin-top:3rem; display:flex; gap:2.5rem; justify-content:center; font-weight:350;">
-        <span>Email</span><span>LinkedIn</span><span>GitHub</span>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <p style="font-weight:400;">ARSLAN SHAH</p>
-    <p>E-Commerce • Brand Development • Data • Digital Systems</p>
-    <p>© 2026 Arslan Shah</p>
-  </footer>
-
-  <script>
-    (function() {
-      const body = document.body;
-      const themeToggle = document.getElementById('themeToggle');
-      const navbar = document.getElementById('navbar');
-
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') {
-        body.classList.add('dark');
-        themeToggle.textContent = '☼';
-      } else {
-        themeToggle.textContent = '☾';
-      }
-
-      themeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark');
-        const isDark = body.classList.contains('dark');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        themeToggle.textContent = isDark ? '☼' : '☾';
-      });
-
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 40) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
-        }
-      });
-
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          const href = this.getAttribute('href');
-          if (href === "#" || !href) return;
-          const target = document.querySelector(href);
-          if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      });
-
-      const animatedElements = document.querySelectorAll('.project-item, .exp-item, .skill-category, .about-flex');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      }, { threshold: 0.15 });
-
-      animatedElements.forEach(el => {
-        el.style.opacity = 0;
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
-        observer.observe(el);
-      });
-    })();
-  </script>
-  <script src="js/script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
