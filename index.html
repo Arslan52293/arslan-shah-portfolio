@@ -1,339 +1,793 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Arslan Shah — Business & Technology Strategist</title>
-    <meta name="description" content="Arslan Shah is a Business & Technology Strategist, Brand Development Specialist, and AI & Data Analytics Professional." />
-    <link rel="canonical" href="https://arslanshah.com/" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Arslan Shah · E-Commerce, Brand & Data</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200..700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Arslan Shah — Business & Technology Strategist" />
-    <meta property="og:description" content="Helping businesses grow using strategy, AI, software and data." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://arslanshah.com/" />
-    <meta property="og:image" content="https://arslanshah.com/assets/profile/og-image.jpg" />
+    :root {
+      --bg: #F6F5F0;
+      --text: #171814;
+      --text-secondary: #6B6D64;
+      --border: #DDDCD4;
+      --accent: #536653;
+      --white: #FFFFFF;
+      --dark-bg: #111411;
+      --dark-text: #F1F1EA;
+      --dark-secondary: #A7AAA0;
+      --dark-border: #2A2D28;
+      --dark-accent: #82937C;
+      --dark-card: #181C18;
+      --bright-lime: #b4c98b;
+      --bright-sun: #e9c46a;
+      --soft-coral: #e9a882;
+      --transition: 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
 
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Arslan Shah — Business & Technology Strategist" />
-    <meta name="twitter:description" content="Helping businesses grow using strategy, AI, software and data." />
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      overflow-x: hidden;
+      font-weight: 300;
+    }
 
-    <!-- Schema.org -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Arslan Shah",
-            "jobTitle": "Business & Technology Strategist",
-            "url": "https://arslanshah.com",
-            "sameAs": [
-                "https://linkedin.com/in/arslanshah",
-                "https://github.com/arslanshah",
-                "https://twitter.com/arslanshah"
-            ]
-        }
-    </script>
+    body.dark {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+    }
 
-    <!-- Google Fonts (Inter, Space Grotesk, DM Sans) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
 
-    <!-- Font Awesome (free icons) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    h1, h2, h3 {
+      font-weight: 300;
+      letter-spacing: -0.02em;
+    }
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css" />
+    h1 {
+      font-size: clamp(3.8rem, 9vw, 6rem);
+      line-height: 1.1;
+      font-weight: 250;
+    }
+
+    h2 {
+      font-size: 2.8rem;
+      font-weight: 280;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      font-weight: 400;
+      display: inline-block;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+
+    body.dark .section-label {
+      color: var(--dark-secondary);
+      border-bottom-color: var(--dark-border);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.8rem 2.5rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: transparent;
+      transition: background 0.4s, backdrop-filter 0.4s, color 0.3s;
+      mix-blend-mode: difference;
+      color: white;
+    }
+
+    .navbar.scrolled {
+      background: rgba(246, 245, 240, 0.9);
+      backdrop-filter: blur(16px);
+      mix-blend-mode: normal;
+      color: var(--text);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    body.dark .navbar.scrolled {
+      background: rgba(17, 20, 17, 0.9);
+      color: var(--dark-text);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-logo {
+      font-weight: 400;
+      font-size: 1.4rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.3rem;
+      align-items: center;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 400;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.65;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: inherit;
+      margin-left: 0.5rem;
+      transition: transform 0.3s;
+    }
+
+    .theme-toggle:hover {
+      transform: rotate(15deg);
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      color: white;
+    }
+
+    .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: heroSlowZoom 22s infinite alternate ease-in-out;
+      filter: brightness(0.85);
+    }
+
+    @keyframes heroSlowZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.04); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 60%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
+      margin-left: 7vw;
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(25px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-sub {
+      font-size: 0.9rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      font-weight: 350;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .hero-text {
+      font-size: 1.4rem;
+      font-weight: 280;
+      line-height: 1.6;
+      max-width: 580px;
+      margin-bottom: 2.8rem;
+      opacity: 0.92;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.4rem;
+      border: 1px solid white;
+      color: white;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: all 0.4s;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+      font-weight: 400;
+    }
+
+    .btn:hover {
+      background: white;
+      color: #111;
+      border-color: white;
+    }
+
+    .btn-outline {
+      border-color: var(--text);
+      color: var(--text);
+      background: transparent;
+      backdrop-filter: none;
+    }
+
+    body.dark .btn-outline {
+      border-color: var(--dark-text);
+      color: var(--dark-text);
+    }
+
+    .btn-outline:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    body.dark .btn-outline:hover {
+      background: var(--dark-text);
+      color: var(--dark-bg);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-8px); }
+      60% { transform: translateX(-50%) translateY(-4px); }
+    }
+
+    section {
+      padding: 7rem 0;
+    }
+
+    .light-section {
+      background: var(--white);
+    }
+
+    body.dark .light-section {
+      background: var(--dark-card);
+    }
+
+    .nature-divider {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .nature-divider img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.65);
+      transition: transform 8s ease;
+    }
+
+    .nature-divider:hover img {
+      transform: scale(1.02);
+    }
+
+    .nature-divider .quote {
+      position: relative;
+      z-index: 2;
+      font-size: 2.4rem;
+      font-weight: 280;
+      max-width: 750px;
+      padding: 0 2rem;
+      font-style: italic;
+      text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+    }
+
+    .accent-bright {
+      color: var(--bright-sun);
+    }
+
+    .project-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 6rem;
+      margin-top: 2rem;
+    }
+
+    .project-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .project-number {
+      font-size: 3.5rem;
+      font-weight: 200;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+      opacity: 0.7;
+    }
+
+    body.dark .project-number {
+      color: var(--dark-accent);
+    }
+
+    .project-title {
+      font-size: 2.4rem;
+      font-weight: 280;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .project-desc {
+      margin-bottom: 2rem;
+      color: var(--text-secondary);
+      font-weight: 320;
+    }
+
+    .project-image {
+      width: 100%;
+      height: auto;
+      border-radius: 2px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+      transition: transform 0.5s ease, box-shadow 0.5s;
+    }
+
+    .project-image:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+    }
+
+    .experience-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 2.8rem;
+      margin-top: 2rem;
+    }
+
+    .exp-item {
+      display: flex;
+      gap: 2.5rem;
+      border-left: 1px solid var(--border);
+      padding-left: 2.5rem;
+      transition: border-color 0.3s;
+    }
+
+    .exp-item:hover {
+      border-left-color: var(--bright-lime);
+    }
+
+    .exp-year {
+      font-weight: 350;
+      min-width: 160px;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 3.5rem;
+      margin-top: 2rem;
+    }
+
+    .skill-category h4 {
+      font-weight: 420;
+      margin-bottom: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+
+    .skill-category ul {
+      list-style: none;
+      color: var(--text-secondary);
+    }
+
+    .skill-category li {
+      margin-bottom: 0.4rem;
+      transition: color 0.2s;
+    }
+
+    .skill-category li:hover {
+      color: var(--bright-lime);
+    }
+
+    .about-flex {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 2px;
+      filter: brightness(0.95);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2.5rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 768px) {
+      .project-item, .about-flex {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.7rem;
+      }
+      .hero-content {
+        margin-left: 1.5rem;
+      }
+    }
+
+    .highlight-bright {
+      color: var(--soft-coral);
+    }
+  </style>
 </head>
 <body>
-
-    <!-- Loading Screen -->
-    <div id="loader" aria-hidden="true">
-        <div class="loader-ring"></div>
-        <div class="loader-text">Loading</div>
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">ARSLAN SHAH</div>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#casestudies">Cases</a>
+      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#cv">CV</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Dark mode toggle">☾</button>
     </div>
+  </nav>
 
-    <!-- Cursor Glow -->
-    <div id="cursor-glow" aria-hidden="true"></div>
-
-    <!-- Scroll Progress -->
-    <div id="scroll-progress" aria-hidden="true"></div>
-
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
-        <div class="navbar-inner">
-            <a href="#hero" class="logo">Arslan<span>.</span></a>
-            <div class="nav-links" id="navLinks">
-                <!-- populated by JS -->
-            </div>
-            <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="command-toggle" id="commandToggle" aria-label="Command palette">
-                    <i class="fas fa-search"></i>
-                </button>
-                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Mobile Overlay & Menu -->
-    <div class="mobile-overlay" id="mobileOverlay"></div>
-    <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
-        <!-- populated by JS -->
+  <header class="hero">
+    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Mountain mist landscape" class="hero-image">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>ARSLAN SHAH</h1>
+      <div class="hero-sub">E-COMMERCE • BRAND • DATA</div>
+      <p class="hero-text">Building brands, understanding customers, and creating digital solutions for real business problems.</p>
+      <div class="btn-group">
+        <a href="#work" class="btn">Explore Work</a>
+        <a href="Arslan_Shah_CV.pdf" class="btn" download>Download CV</a>
+      </div>
     </div>
+    <div class="scroll-hint">Scroll ↓</div>
+  </header>
 
-    <!-- Command Palette -->
-    <div class="command-palette-overlay" id="commandOverlay"></div>
-    <div class="command-palette" id="commandPalette" role="dialog" aria-label="Command palette">
-        <div class="command-input-wrap">
-            <i class="fas fa-search"></i>
-            <input type="text" id="commandInput" placeholder="Search everything..." autofocus />
-            <span class="command-shortcut">⌘K</span>
+  <section id="work" class="light-section">
+    <div class="container">
+      <span class="section-label">Selected Work</span>
+      <p style="max-width:600px; font-weight:300; margin-bottom:4rem; font-size:1.2rem;">A collection of brands, digital systems, and data-driven projects.</p>
+      
+      <div class="project-grid">
+        <div class="project-item">
+          <div>
+            <div class="project-number">01</div>
+            <h3 class="project-title">BEYOU</h3>
+            <div class="project-tags">E-COMMERCE · DATA · BRAND</div>
+            <p class="project-desc">Using sales and customer data to understand business behavior and improve decision making.</p>
+            <a href="#" class="btn btn-outline">View Case Study</a>
+          </div>
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Beyou dashboard" class="project-image">
         </div>
-        <div class="command-results" id="commandResults">
-            <!-- populated by JS -->
+
+        <div class="project-item">
+          <div>
+            <div class="project-number">02</div>
+            <h3 class="project-title">DÉCOR GHAR</h3>
+            <div class="project-tags">BRAND · INFLUENCER · E-COMMERCE</div>
+            <p class="project-desc">Building brand awareness through influencer marketing and digital strategy.</p>
+            <a href="#" class="btn btn-outline">View Case Study</a>
+          </div>
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Decor Ghar" class="project-image">
         </div>
+
+        <div class="project-item">
+          <div>
+            <div class="project-number">03</div>
+            <h3 class="project-title">AKBEAUTY</h3>
+            <div class="project-tags">E-COMMERCE · BRAND · BEAUTY</div>
+            <p class="project-desc">Beauty brand development with digital storefront and customer analytics.</p>
+            <a href="#" class="btn btn-outline">View Case Study</a>
+          </div>
+          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1487&q=80" alt="AKBEAUTY" class="project-image">
+        </div>
+
+        <div class="project-item">
+          <div>
+            <div class="project-number">04</div>
+            <h3 class="project-title">DCORVO</h3>
+            <div class="project-tags">BRAND · DIGITAL · E-COMMERCE</div>
+            <p class="project-desc">Digital brand identity and e-commerce system for modern retail.</p>
+            <a href="#" class="btn btn-outline">View Case Study</a>
+          </div>
+          <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="DCORVO" class="project-image">
+        </div>
+
+        <div class="project-item">
+          <div>
+            <div class="project-number">05</div>
+            <h3 class="project-title">SHESHOEOFFICIAL</h3>
+            <div class="project-tags">E-COMMERCE · FASHION · BRAND</div>
+            <p class="project-desc">Footwear brand e-commerce platform with influencer integration.</p>
+            <a href="#" class="btn btn-outline">View Case Study</a>
+          </div>
+          <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" alt="SHESHOEOFFICIAL" class="project-image">
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Back to Top -->
-    <button id="back-top" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+  <div class="nature-divider">
+    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Forest light">
+    <div class="quote">"Good work starts with clear thinking."<br><span style="font-size:1.5rem; font-style:normal; font-weight:300;">— Arslan Shah</span></div>
+  </div>
 
-    <!-- Toast Container -->
-    <div id="toast-container" aria-live="polite"></div>
-
-    <!-- Main Content -->
-    <main>
-
-        <!-- HERO -->
-        <section class="hero" id="hero">
-            <div class="hero-grid-bg"></div>
-            <div class="hero-blob hero-blob-1"></div>
-            <div class="hero-blob hero-blob-2"></div>
-            <div class="container hero-content">
-                <div class="hero-badge">✦ Open for collaborations</div>
-                <h1>
-                    Hi, I'm <span class="highlight">Arslan Shah</span>
-                </h1>
-                <div class="hero-typing-wrap">
-                    <span class="static-label">—</span>
-                    <span id="typewriter"></span>
-                </div>
-                <p class="hero-desc" id="heroDesc"></p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Let's Work Together</a>
-                    <a href="#projects" class="btn btn-outline">View Projects</a>
-                </div>
-                <div class="hero-stats" id="heroStats">
-                    <!-- populated by JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- ABOUT -->
-        <section id="about">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-label">About</div>
-                    <h2 class="section-title">Strategy meets<br />execution.</h2>
-                    <p class="section-sub">I bridge the gap between brand vision and measurable results.</p>
-                </div>
-                <div class="about-grid">
-                    <div class="about-text fade-up" id="aboutText">
-                        <!-- populated by JS -->
-                    </div>
-                    <div class="about-timeline fade-up" id="aboutTimeline">
-                        <!-- populated by JS -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- EXPERIENCE -->
-        <section id="experience">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-label">Experience</div>
-                    <h2 class="section-title">Where I've made an impact.</h2>
-                </div>
-                <div class="exp-timeline" id="expTimeline">
-                    <!-- populated by JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- SKILLS -->
-        <section id="skills">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-label">Skills</div>
-                    <h2 class="section-title">My skill set.</h2>
-                </div>
-                <div class="skills-wrap" id="skillsWrap">
-                    <!-- populated by JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- PROJECTS -->
-        <section id="projects">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-label">Work</div>
-                    <h2 class="section-title">Featured projects.</h2>
-                    <p class="section-sub">Each project is a story of research, strategy, and impact.</p>
-                </div>
-                <div class="project-filters" id="projectFilters">
-                    <!-- populated by JS -->
-                </div>
-                <div class="projects-grid" id="projectsGrid">
-                    <!-- populated by JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- CASE STUDIES (Pakistan Metrics) -->
-        <section id="case-studies">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-label">Case Studies</div>
-                    <h2 class="section-title">Deep dives into impactful work.</h2>
-                </div>
-                <div class="case-studies-grid" id="caseStudiesGrid">
-                    <!-- populated by JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- TOOLS -->
-        <section id="tools">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-label">Toolbox</div>
-                    <h2 class="section-title">Tech &amp; tools I work with.</h2>
-                </div>
-                <div class="tools-grid" id="toolsGrid">
-                    <!-- populated by JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- TESTIMONIALS -->
-        <section id="testimonials">
-            <div class="container">
-                <div class="section-header centered">
-                    <div class="section-label">Testimonials</div>
-                    <h2 class="section-title">Kind words from clients.</h2>
-                </div>
-                <div class="testimonial-slider" id="testimonialSlider">
-                    <!-- populated by JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- ACHIEVEMENTS -->
-        <section id="achievements">
-            <div class="container">
-                <div class="section-header centered">
-                    <div class="section-label">Achievements</div>
-                    <h2 class="section-title">By the numbers.</h2>
-                </div>
-                <div class="achievements-grid" id="achievementsGrid">
-                    <!-- populated by JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- SERVICES -->
-        <section id="services">
-            <div class="container">
-                <div class="section-header centered">
-                    <div class="section-label">Services</div>
-                    <h2 class="section-title">How I can help.</h2>
-                </div>
-                <div class="services-grid" id="servicesGrid">
-                    <!-- populated by JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- BLOG -->
-        <section id="blog">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-label">Blog</div>
-                    <h2 class="section-title">Insights &amp; articles.</h2>
-                </div>
-                <div class="blog-grid" id="blogGrid">
-                    <!-- populated by JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ -->
-        <section id="faq">
-            <div class="container">
-                <div class="section-header centered">
-                    <div class="section-label">FAQ</div>
-                    <h2 class="section-title">Got questions?</h2>
-                </div>
-                <div class="faq-list" id="faqList">
-                    <!-- populated by JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section id="contact">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-label">Contact</div>
-                    <h2 class="section-title">Let's create something<br />remarkable.</h2>
-                    <p class="section-sub">I'm always open to new collaborations and ideas.</p>
-                </div>
-                <div class="contact-wrap">
-                    <div class="contact-info" id="contactInfo">
-                        <!-- populated by JS -->
-                    </div>
-                    <form class="contact-form" id="contactForm" action="#" method="post">
-                        <input type="text" placeholder="Your name" required aria-label="Your name" />
-                        <input type="email" placeholder="Your email" required aria-label="Your email" />
-                        <textarea placeholder="Tell me about your project..." required aria-label="Message"></textarea>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                        <p style="font-size:13px;color:var(--text-secondary);margin-top:4px;">
-                            <i class="fas fa-info-circle"></i> This form uses mailto — your email client will open.
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-inner">
-                <span class="footer-copy">&copy; 2026 Arslan Shah. All rights reserved.</span>
-                <div class="footer-links" id="footerLinks">
-                    <!-- populated by JS -->
-                </div>
-                <div class="footer-socials" id="footerSocials">
-                    <!-- populated by JS -->
-                </div>
-            </div>
+  <section id="casestudies" class="light-section">
+    <div class="container">
+      <span class="section-label">Case Studies</span>
+      <div style="display:flex; flex-direction:column; gap:5rem;">
+        <div class="project-item">
+          <div>
+            <h3 style="font-weight:300;">01 / BEYOU</h3>
+            <p style="margin:1rem 0;"><span class="highlight-bright">●</span> Customer behavior & sales analysis</p>
+            <p><strong>CHALLENGE</strong> — Fragmented data sources.</p>
+            <p style="margin-top:1rem;"><strong>SKILLS</strong> Python · Pandas · E-Commerce Strategy</p>
+          </div>
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80" alt="Analysis">
         </div>
-    </footer>
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+        <div class="project-item">
+          <div>
+            <h3 style="font-weight:300;">02 / DÉCOR GHAR</h3>
+            <p style="margin:1rem 0;"><span class="highlight-bright">●</span> Influencer marketing & brand development</p>
+            <p><strong>CHALLENGE</strong> — Low brand awareness in home decor niche.</p>
+            <p style="margin-top:1rem;"><strong>SKILLS</strong> Brand Strategy · Influencer Campaigns · Shopify</p>
+          </div>
+          <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Decor Ghar case">
+        </div>
+
+        <div class="project-item">
+          <div>
+            <h3 style="font-weight:300;">03 / AKBEAUTY</h3>
+            <p style="margin:1rem 0;"><span class="highlight-bright">●</span> Beauty brand digital transformation</p>
+            <p><strong>CHALLENGE</strong> — Transitioning from physical to online retail.</p>
+            <p style="margin-top:1rem;"><strong>SKILLS</strong> E-Commerce · Data Analysis · Customer Insights</p>
+          </div>
+          <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" alt="AKBEAUTY case">
+        </div>
+
+        <div class="project-item">
+          <div>
+            <h3 style="font-weight:300;">04 / DCORVO</h3>
+            <p style="margin:1rem 0;"><span class="highlight-bright">●</span> Digital brand identity creation</p>
+            <p><strong>CHALLENGE</strong> — Building a cohesive brand from scratch.</p>
+            <p style="margin-top:1rem;"><strong>SKILLS</strong> Brand Development · Web Design · Strategy</p>
+          </div>
+          <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80" alt="DCORVO case">
+        </div>
+
+        <div class="project-item">
+          <div>
+            <h3 style="font-weight:300;">05 / SHESHOEOFFICIAL</h3>
+            <p style="margin:1rem 0;"><span class="highlight-bright">●</span> Footwear e-commerce & influencer strategy</p>
+            <p><strong>CHALLENGE</strong> — Competing in saturated fashion market.</p>
+            <p style="margin-top:1rem;"><strong>SKILLS</strong> Influencer Marketing · E-Commerce · Analytics</p>
+          </div>
+          <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" alt="SHESHOEOFFICIAL case">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <span class="section-label">Experience</span>
+      <div class="experience-timeline">
+        <div class="exp-item"><span class="exp-year">2024 — 2026</span><div><strong>Hypetek Advertising Agency</strong><br>Brand Development & Brand Management Executive</div></div>
+        <div class="exp-item"><span class="exp-year">2024</span><div><strong>Hypetek</strong><br>Data Analyst — E-Commerce</div></div>
+        <div class="exp-item"><span class="exp-year">2023 — 2024</span><div><strong>Hypetek</strong><br>Software Developer & Data Analyst</div></div>
+        <div class="exp-item"><span class="exp-year">Oct 2022 — Apr 2023</span><div><strong>Ezline Software House Pvt Ltd</strong><br>Frontend Developer Internship</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="nature-divider" style="height:50vh;">
+    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Lake water calm">
+    <div style="position:relative; z-index:2; font-size:2.2rem; letter-spacing:0.25em; font-weight:280;">THINK. BUILD. <span style="color:#e9c46a;">IMPROVE.</span></div>
+  </div>
+
+  <section id="about">
+    <div class="container about-flex">
+      <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1574&q=80" alt="Calm valley" class="about-image">
+      <div>
+        <span class="section-label">About Me</span>
+        <p style="font-weight:300; font-size:1.25rem; line-height:1.7;">I work at the intersection of e-commerce, brand development, data analysis and digital systems. I enjoy understanding how a business works, identifying problems through data, and turning ideas into practical digital solutions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="light-section">
+    <div class="container">
+      <span class="section-label">Skills</span>
+      <div class="skills-grid">
+        <div class="skill-category"><h4>E-COMMERCE</h4><ul><li>Shopify</li><li>Store Management</li><li>Customer Analysis</li><li>Sales Analysis</li></ul></div>
+        <div class="skill-category"><h4>BRAND</h4><ul><li>Brand Management</li><li>Brand Positioning</li><li>Influencer Marketing</li><li>Campaigns</li></ul></div>
+        <div class="skill-category"><h4>DATA</h4><ul><li>Python</li><li>Pandas</li><li>NumPy</li><li>Matplotlib</li><li>Business Analytics</li></ul></div>
+        <div class="skill-category"><h4>SYSTEMS</h4><ul><li>Flask</li><li>SQLite</li><li>JavaScript</li><li>HTML/CSS</li><li>Git</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="cv" class="nature-divider" style="height:50vh;">
+    <img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Open sky landscape">
+    <div style="position:relative; z-index:2;">
+      <p style="font-size:2rem; margin-bottom:1.5rem; font-weight:300;">A CLOSER LOOK</p>
+      <a href="documents/Arslan_Shah_CV.pdf" class="btn" download>DOWNLOAD CV</a>
+      <p style="margin-top:1.2rem; opacity:0.85;">PDF • UPDATED 2026</p>
+    </div>
+  </div>
+
+  <section id="contact" class="nature-divider" style="height:75vh;">
+    <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sunset mountain water">
+    <div style="position:relative; z-index:2; text-align:center;">
+      <h2 style="font-weight:280; color:white;">LET'S BUILD SOMETHING <span style="color:#e9c46a;">MEANINGFUL.</span></h2>
+      <p style="margin:2rem 0; font-size:1.2rem;">Have a brand, e-commerce project, or data problem in mind?</p>
+      <a href="#" class="btn">Get in Touch</a>
+      <div style="margin-top:3rem; display:flex; gap:2.5rem; justify-content:center; font-weight:350;">
+        <span>Email</span><span>LinkedIn</span><span>GitHub</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p style="font-weight:400;">ARSLAN SHAH</p>
+    <p>E-Commerce • Brand Development • Data • Digital Systems</p>
+    <p>© 2026 Arslan Shah</p>
+  </footer>
+
+  <script>
+    (function() {
+      const body = document.body;
+      const themeToggle = document.getElementById('themeToggle');
+      const navbar = document.getElementById('navbar');
+
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        body.classList.add('dark');
+        themeToggle.textContent = '☼';
+      } else {
+        themeToggle.textContent = '☾';
+      }
+
+      themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        const isDark = body.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        themeToggle.textContent = isDark ? '☼' : '☾';
+      });
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href === "#" || !href) return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      const animatedElements = document.querySelectorAll('.project-item, .exp-item, .skill-category, .about-flex');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.15 });
+
+      animatedElements.forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+        observer.observe(el);
+      });
+    })();
+  </script>
 </body>
 </html>
