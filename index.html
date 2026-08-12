@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arslan Shah — Business & Technology Strategist</title>
+    <meta name="description" content="Arslan Shah is a Business & Technology Strategist, Brand Development Specialist, and AI & Data Analytics Professional." />
+    <link rel="canonical" href="https://arslanshah.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Arslan Shah — Business & Technology Strategist" />
+    <meta property="og:description" content="Helping businesses grow using strategy, AI, software and data." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://arslanshah.com/" />
+    <meta property="og:image" content="https://arslanshah.com/assets/profile/og-image.jpg" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Arslan Shah — Business & Technology Strategist" />
+    <meta name="twitter:description" content="Helping businesses grow using strategy, AI, software and data." />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Arslan Shah",
+            "jobTitle": "Business & Technology Strategist",
+            "url": "https://arslanshah.com",
+            "sameAs": [
+                "https://linkedin.com/in/arslanshah",
+                "https://github.com/arslanshah",
+                "https://twitter.com/arslanshah"
+            ]
+        }
+    </script>
+
+    <!-- Google Fonts (Inter, Space Grotesk, DM Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loader" aria-hidden="true">
+        <div class="loader-ring"></div>
+        <div class="loader-text">Loading</div>
+    </div>
+
+    <!-- Cursor Glow -->
+    <div id="cursor-glow" aria-hidden="true"></div>
+
+    <!-- Scroll Progress -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar-inner">
+            <a href="#hero" class="logo">Arslan<span>.</span></a>
+            <div class="nav-links" id="navLinks">
+                <!-- populated by JS -->
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="command-toggle" id="commandToggle" aria-label="Command palette">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Overlay & Menu -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+        <!-- populated by JS -->
+    </div>
+
+    <!-- Command Palette -->
+    <div class="command-palette-overlay" id="commandOverlay"></div>
+    <div class="command-palette" id="commandPalette" role="dialog" aria-label="Command palette">
+        <div class="command-input-wrap">
+            <i class="fas fa-search"></i>
+            <input type="text" id="commandInput" placeholder="Search everything..." autofocus />
+            <span class="command-shortcut">⌘K</span>
+        </div>
+        <div class="command-results" id="commandResults">
+            <!-- populated by JS -->
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button id="back-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Toast Container -->
+    <div id="toast-container" aria-live="polite"></div>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="hero-grid-bg"></div>
+            <div class="hero-blob hero-blob-1"></div>
+            <div class="hero-blob hero-blob-2"></div>
+            <div class="container hero-content">
+                <div class="hero-badge">✦ Open for collaborations</div>
+                <h1>
+                    Hi, I'm <span class="highlight">Arslan Shah</span>
+                </h1>
+                <div class="hero-typing-wrap">
+                    <span class="static-label">—</span>
+                    <span id="typewriter"></span>
+                </div>
+                <p class="hero-desc" id="heroDesc"></p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Let's Work Together</a>
+                    <a href="#projects" class="btn btn-outline">View Projects</a>
+                </div>
+                <div class="hero-stats" id="heroStats">
+                    <!-- populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">About</div>
+                    <h2 class="section-title">Strategy meets<br />execution.</h2>
+                    <p class="section-sub">I bridge the gap between brand vision and measurable results.</p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-text fade-up" id="aboutText">
+                        <!-- populated by JS -->
+                    </div>
+                    <div class="about-timeline fade-up" id="aboutTimeline">
+                        <!-- populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">Experience</div>
+                    <h2 class="section-title">Where I've made an impact.</h2>
+                </div>
+                <div class="exp-timeline" id="expTimeline">
+                    <!-- populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">Skills</div>
+                    <h2 class="section-title">My skill set.</h2>
+                </div>
+                <div class="skills-wrap" id="skillsWrap">
+                    <!-- populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">Work</div>
+                    <h2 class="section-title">Featured projects.</h2>
+                    <p class="section-sub">Each project is a story of research, strategy, and impact.</p>
+                </div>
+                <div class="project-filters" id="projectFilters">
+                    <!-- populated by JS -->
+                </div>
+                <div class="projects-grid" id="projectsGrid">
+                    <!-- populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- CASE STUDIES (Pakistan Metrics) -->
+        <section id="case-studies">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">Case Studies</div>
+                    <h2 class="section-title">Deep dives into impactful work.</h2>
+                </div>
+                <div class="case-studies-grid" id="caseStudiesGrid">
+                    <!-- populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- TOOLS -->
+        <section id="tools">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">Toolbox</div>
+                    <h2 class="section-title">Tech &amp; tools I work with.</h2>
+                </div>
+                <div class="tools-grid" id="toolsGrid">
+                    <!-- populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section id="testimonials">
+            <div class="container">
+                <div class="section-header centered">
+                    <div class="section-label">Testimonials</div>
+                    <h2 class="section-title">Kind words from clients.</h2>
+                </div>
+                <div class="testimonial-slider" id="testimonialSlider">
+                    <!-- populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ACHIEVEMENTS -->
+        <section id="achievements">
+            <div class="container">
+                <div class="section-header centered">
+                    <div class="section-label">Achievements</div>
+                    <h2 class="section-title">By the numbers.</h2>
+                </div>
+                <div class="achievements-grid" id="achievementsGrid">
+                    <!-- populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section id="services">
+            <div class="container">
+                <div class="section-header centered">
+                    <div class="section-label">Services</div>
+                    <h2 class="section-title">How I can help.</h2>
+                </div>
+                <div class="services-grid" id="servicesGrid">
+                    <!-- populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG -->
+        <section id="blog">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">Blog</div>
+                    <h2 class="section-title">Insights &amp; articles.</h2>
+                </div>
+                <div class="blog-grid" id="blogGrid">
+                    <!-- populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq">
+            <div class="container">
+                <div class="section-header centered">
+                    <div class="section-label">FAQ</div>
+                    <h2 class="section-title">Got questions?</h2>
+                </div>
+                <div class="faq-list" id="faqList">
+                    <!-- populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">Contact</div>
+                    <h2 class="section-title">Let's create something<br />remarkable.</h2>
+                    <p class="section-sub">I'm always open to new collaborations and ideas.</p>
+                </div>
+                <div class="contact-wrap">
+                    <div class="contact-info" id="contactInfo">
+                        <!-- populated by JS -->
+                    </div>
+                    <form class="contact-form" id="contactForm" action="#" method="post">
+                        <input type="text" placeholder="Your name" required aria-label="Your name" />
+                        <input type="email" placeholder="Your email" required aria-label="Your email" />
+                        <textarea placeholder="Tell me about your project..." required aria-label="Message"></textarea>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                        <p style="font-size:13px;color:var(--text-secondary);margin-top:4px;">
+                            <i class="fas fa-info-circle"></i> This form uses mailto — your email client will open.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <span class="footer-copy">&copy; 2026 Arslan Shah. All rights reserved.</span>
+                <div class="footer-links" id="footerLinks">
+                    <!-- populated by JS -->
+                </div>
+                <div class="footer-socials" id="footerSocials">
+                    <!-- populated by JS -->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
